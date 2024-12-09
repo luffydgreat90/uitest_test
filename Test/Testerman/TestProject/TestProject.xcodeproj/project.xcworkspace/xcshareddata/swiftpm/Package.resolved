@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "ctrating2",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/StewartLynch/CTRating2",
+      "state" : {
+        "revision" : "41b485150a9f671a874a097dec2ac7e9e7150877",
+        "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "url-package-manager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/luffydgreat90/url-package-manager",
+      "state" : {
+        "revision" : "659c23e3f6df6e5f988fd310f0c3e01e0a2f919a",
+        "version" : "0.0.6"
+      }
+    }
+  ],
+  "version" : 2
+}
