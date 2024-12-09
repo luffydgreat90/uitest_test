@@ -7,40 +7,37 @@
 
 import Foundation
 
-typealias CharacterHandler  = (@escaping (Result<(Data, HTTPURLResponse), Error>) -> Void) -> URLSessionTask?
+typealias CharacterHandler  = (@escaping (Result<[Character], Error>) -> Void) -> Void
 
-class CharacterStore {
-    let urlSession: URLSession
-
-    init(urlSession: URLSession) {
-        self.urlSession = urlSession
+final class CharacterStore {
+    let getHandler: URLHandler
+    private var taskCharacters: URLSessionTask? = nil
+    
+    init(getHandler: @escaping URLHandler) {
+        self.getHandler = getHandler
     }
 
-    func getCharacters(complete: @escaping (Result<(Data, HTTPURLResponse), Error>) -> Void)
-    -> URLSessionTask? {
+    func getCharacters(complete: @escaping (Result<[Character], Error>) -> Void) {
         guard let url = URL(string: "https://rickandmortyapi.com/api/character") else {
             complete(Result {
                 throw LoadError.invalidURL
             })
 
-            return nil
+            return
         }
 
-        let task = urlSession.dataTask(with: URLRequest(url:url)) { data, response, error in
+        taskCharacters?.cancel()
+        taskCharacters = getHandler(url) { result in
             complete(
                 Result {
-                    if let error = error {
-                        throw error
-                    }else if let data, let httpResponse = response as? HTTPURLResponse {
-                        return (data, httpResponse)
-                    }else {
-                        throw LoadError.invalidURL
+                    switch result {
+                    case .success((let data, let httpResponse)):
+                        try CharacterMapper.map(data: data, response: httpResponse)
+                    case .failure(let failure):
+                        throw failure
                     }
-                }
-            )
 
+                })
         }
-        task.resume()
-        return task
     }
 }
