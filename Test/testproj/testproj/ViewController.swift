@@ -61,7 +61,6 @@ extension ViewController: UITableViewDataSource {
                     switch result {
                     case .success(let data):
                         cell?.imgView?.image = UIImage(data: data)
-
                     case .failure:
                         break
                     }

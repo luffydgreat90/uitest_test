@@ -7,14 +7,24 @@
 
 import XCTest
 
+protocol Test {}
+
 final class testprojUITests: XCTestCase {
 
+    class Testerman: Test {}
 
     func testExample() throws {
-        // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
 
     }
 
+    func test_e(){
+        let testm = Testerman()
+        let test: Test = testm
+
+    }
+
 }
+
+

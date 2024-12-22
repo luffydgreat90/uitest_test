@@ -437,6 +437,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = testproj/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -494,7 +495,7 @@
 				F899E8BF2D04E811006627AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		F8DB29402CFCC010006822FD /* Build configuration list for PBXProject "testproj" */ = {
 			isa = XCConfigurationList;
@@ -503,7 +504,7 @@
 				F8DB29582CFCC011006822FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		F8DB29592CFCC011006822FD /* Build configuration list for PBXNativeTarget "testproj" */ = {
 			isa = XCConfigurationList;
@@ -512,7 +513,7 @@
 				F8DB295B2CFCC011006822FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
