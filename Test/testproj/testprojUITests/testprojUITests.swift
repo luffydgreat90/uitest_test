@@ -15,6 +15,7 @@ final class testprojUITests: XCTestCase {
 
     func testExample() throws {
         let app = XCUIApplication()
+        app.launchEnvironment = ["UITestUseMocks": "true"]
         app.launch()
 
     }

@@ -37,15 +37,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func getCharacters() -> CharacterHandler {
-    #if DEBUG
-        return { complete in
-            complete(Result {
-                return [Character(name: "Morty", image: URL(string: "https://rickandmortyapi.com/api/character/avatar/2.jpeg")!)]
-            })
-       }
-        #elseif RELEASE
-        return self.characterStore.getCharacters
-    #endif
 
+        if let useMocks = ProcessInfo().environment["UITestUseMocks"], useMocks == "true" {
+            return { complete in
+                complete(Result {
+                    return [Character(name: "Morty", image: URL(string: "https://rickandmortyapi.com/api/character/avatar/2.jpeg")!)]
+                })
+           }
+        } else {
+            return self.characterStore.getCharacters
+        }
     }
 }
