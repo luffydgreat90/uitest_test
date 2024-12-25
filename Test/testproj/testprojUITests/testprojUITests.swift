@@ -14,7 +14,12 @@ final class testprojUITests: XCTestCase {
         app.launchEnvironment = ["UITestUseMocks": "true"]
         app.launch()
 
-        XCTAssertEqual(app.title, "Rick and Morty")
+        XCTAssert(app.staticTexts["Rick and Morty"].exists)
         XCTAssertEqual(app.cells.count, 1)
+        
+        app.cells.element.tap()
+    
+        XCTAssertEqual(app.staticTexts["statusId"].label, "Alive")
+        XCTAssertEqual(app.staticTexts["nameId"].label, "Morty")
     }
 }
