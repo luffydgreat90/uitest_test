@@ -7,12 +7,16 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private let viewModel: ViewModel
+    private let didSelectCharacter: (Character) -> Void
 
-    init?(coder: NSCoder, viewModel: ViewModel) {
+    init?(coder: NSCoder, 
+          viewModel: ViewModel,
+          didSelectCharacter: @escaping (Character) -> Void) {
         self.viewModel = viewModel
+        self.didSelectCharacter = didSelectCharacter
         super.init(coder: coder)
     }
     
@@ -23,6 +27,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = "Rick and Morty"
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(getCharacters), for: .valueChanged)
 
@@ -45,7 +50,7 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.characters.count
     }
@@ -68,5 +73,13 @@ extension ViewController: UITableViewDataSource {
             }
         }
         return cell
+    }
+}
+
+extension ListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didSelectCharacter(viewModel.characters[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

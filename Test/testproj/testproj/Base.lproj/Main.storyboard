@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="testproj" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListViewController" id="BYZ-38-t0r" customClass="ListViewController" customModule="testproj" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,6 +58,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="JaW-vn-MAh"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="a0m-ek-jW1"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -77,6 +78,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="21" y="4"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="sm1-7f-ynB">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="Sbe-sW-Geh" customClass="DetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3bF-3p-Q8F">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PWj-cv-vuU">
+                                <rect key="frame" x="16" y="75" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="3Y7-dx-cVq"/>
+                                    <constraint firstAttribute="height" constant="150" id="hkz-3D-Oge"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOn-QZ-KMs">
+                                <rect key="frame" x="174" y="75" width="211" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szK-cN-QnE">
+                                <rect key="frame" x="174" y="104" width="211" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gDm-de-owR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="DetailViewController"/>
+                        <constraints>
+                            <constraint firstItem="PWj-cv-vuU" firstAttribute="top" secondItem="gDm-de-owR" secondAttribute="top" constant="16" id="0Od-FA-dUt"/>
+                            <constraint firstItem="szK-cN-QnE" firstAttribute="leading" secondItem="PWj-cv-vuU" secondAttribute="trailing" constant="8" id="M6S-7N-COX"/>
+                            <constraint firstItem="szK-cN-QnE" firstAttribute="top" secondItem="VOn-QZ-KMs" secondAttribute="bottom" constant="8" id="OdP-TI-5vl"/>
+                            <constraint firstItem="PWj-cv-vuU" firstAttribute="leading" secondItem="gDm-de-owR" secondAttribute="leading" constant="16" id="Oho-jh-3t0"/>
+                            <constraint firstItem="gDm-de-owR" firstAttribute="trailing" secondItem="szK-cN-QnE" secondAttribute="trailing" constant="8" id="lV3-EM-MEz"/>
+                            <constraint firstItem="VOn-QZ-KMs" firstAttribute="leading" secondItem="PWj-cv-vuU" secondAttribute="trailing" constant="8" id="lxI-R2-LnK"/>
+                            <constraint firstItem="gDm-de-owR" firstAttribute="trailing" secondItem="VOn-QZ-KMs" secondAttribute="trailing" constant="8" id="wfr-Cr-Wfg"/>
+                            <constraint firstItem="VOn-QZ-KMs" firstAttribute="top" secondItem="gDm-de-owR" secondAttribute="top" constant="16" id="xjL-iK-ebL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="PWj-cv-vuU" id="gzk-Ia-0lX"/>
+                        <outlet property="nameLabel" destination="VOn-QZ-KMs" id="Z6z-vk-81v"/>
+                        <outlet property="statusLabel" destination="szK-cN-QnE" id="34H-fb-bw2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V4O-Iw-fNh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="855.72519083969462" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>

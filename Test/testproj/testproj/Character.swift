@@ -9,5 +9,6 @@ import Foundation
 
 struct Character: Decodable {
     let name: String
+    let status: String
     let image: URL
 }
