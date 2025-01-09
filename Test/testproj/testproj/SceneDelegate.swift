@@ -12,6 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var urlSession: URLSession = URLSession(configuration: .ephemeral)
     private lazy var httpClient: HTTPClient = HTTPClient(urlSession: urlSession)
     private lazy var characterStore: CharacterStore = CharacterStore(getHandler: httpClient.get)
+    private lazy var imageStore: ImageStore = ImageStore(urlSession: urlSession)
     private var navigation: UINavigationController?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -31,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         urlSession: urlSession
                     ),
                     getCharacterHttp: getCharacters()
-                )) { [unowned self] character in
+                )) { [unowned self] (character) in
                     navigateDetailViewController(character: character)
                 }
         })
@@ -44,24 +45,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func navigateDetailViewController(character: Character) {
         let vc = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(identifier: "DetailViewController") {   coder in
-                
-                return DetailViewController(coder: coder, character: character)
+            .instantiateViewController(identifier: "DetailViewController") {  [unowned self] coder in
+                return DetailViewController(coder: coder, character: character, imageStore: imageStore)
             }
         
         navigation?.pushViewController(vc, animated: true)
     }
 
-    func getCharacters() -> CharacterHandler {
+    private func getCharacters() -> CharacterHandler {
 
-//        if let useMocks = ProcessInfo().environment["UITestUseMocks"], useMocks == "true" {
+       if let useMocks = ProcessInfo().environment["UITestUseMocks"], useMocks == "true" {
             return { complete in
                 complete(Result {
-                    return [Character(name: "Morty", status: "Alive", image: URL(string: "https://rickandmortyapi.com/api/character/avatar/2.jpeg")!)]
-                })
+                    return [Character(
+                        name: "Morty",
+                        status: "Alive",
+                        image: URL(
+                            string: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+                        )!,
+                        location: Location(
+                            name: "",
+                            url: ""
+                        ))]
+                        })
+
            }
-//        } else {
-//            return self.characterStore.getCharacters
-//        }
+        } else {
+            return self.characterStore.getCharacters
+        }
     }
 }

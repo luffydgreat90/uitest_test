@@ -17,11 +17,9 @@ final class ViewModel {
          getCharacterHttp:@escaping CharacterHandler) {
         self.imageStore = imageStore
         self.getCharactersStore = getCharacterHttp
-
     }
 
     func getCharacters(completion:@escaping (Result<Void, Error>) -> Void) {
-        
         getCharactersStore { [weak self] result in
             completion( Result {
                 switch result {

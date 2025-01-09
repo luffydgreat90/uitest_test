@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CharacterMapper {
+enum CharactersMapper {
 
     private struct Characters: Decodable {
         let results: [Character]
