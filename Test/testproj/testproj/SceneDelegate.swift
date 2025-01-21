@@ -13,6 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var httpClient: HTTPClient = HTTPClient(urlSession: urlSession)
     private lazy var characterStore: CharacterStore = CharacterStore(getHandler: httpClient.get)
     private lazy var imageStore: ImageStore = ImageStore(urlSession: urlSession)
+    private lazy var urlClient: URLClient = URLClient(getHandler: httpClient.get)
     private var navigation: UINavigationController?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -46,7 +47,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func navigateDetailViewController(character: Character) {
         let vc = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(identifier: "DetailViewController") {  [unowned self] coder in
-                return DetailViewController(coder: coder, character: character, imageStore: imageStore)
+                return DetailViewController(
+                    coder: coder,
+                    character: character,
+                    imageStore: imageStore,
+                    urlClient: urlClient
+                ) { [weak self] selectedCharacter in
+                    self?.navigateDetailViewController(
+                        character: selectedCharacter
+                    )
+                }
             }
         
         navigation?.pushViewController(vc, animated: true)

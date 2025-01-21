@@ -12,10 +12,10 @@
 		F899E8BB2D04E811006627AA /* testprojUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F899E8BA2D04E811006627AA /* testprojUITestsLaunchTests.swift */; };
 		F899E8C22D072419006627AA /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F899E8C12D072419006627AA /* HTTPClient.swift */; };
 		F8A78DBC2D2B213700861918 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A78DBB2D2B213700861918 /* Location.swift */; };
-		F8A78DC02D2B2DD200861918 /* LocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A78DBF2D2B2DD200861918 /* LocationStore.swift */; };
-		F8A78DC32D2B2F2700861918 /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A78DC22D2B2F2700861918 /* CharacterMapper.swift */; };
+		F8A78DC02D2B2DD200861918 /* URLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A78DBF2D2B2DD200861918 /* URLClient.swift */; };
 		F8A78DC82D2B30AC00861918 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A78DC72D2B30AC00861918 /* CharacterCell.swift */; };
 		F8A78DCC2D2F4DA800861918 /* LocationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A78DCB2D2F4DA800861918 /* LocationDetail.swift */; };
+		F8A78DCE2D30733C00861918 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A78DCD2D30733C00861918 /* Mapper.swift */; };
 		F8DB29492CFCC010006822FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DB29482CFCC010006822FD /* AppDelegate.swift */; };
 		F8DB294B2CFCC010006822FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DB294A2CFCC010006822FD /* SceneDelegate.swift */; };
 		F8DB294D2CFCC010006822FD /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DB294C2CFCC010006822FD /* ListViewController.swift */; };
@@ -48,10 +48,10 @@
 		F899E8BA2D04E811006627AA /* testprojUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testprojUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F899E8C12D072419006627AA /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		F8A78DBB2D2B213700861918 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		F8A78DBF2D2B2DD200861918 /* LocationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStore.swift; sourceTree = "<group>"; };
-		F8A78DC22D2B2F2700861918 /* CharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapper.swift; sourceTree = "<group>"; };
+		F8A78DBF2D2B2DD200861918 /* URLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLClient.swift; sourceTree = "<group>"; };
 		F8A78DC72D2B30AC00861918 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		F8A78DCB2D2F4DA800861918 /* LocationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetail.swift; sourceTree = "<group>"; };
+		F8A78DCD2D30733C00861918 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		F8DB29452CFCC010006822FD /* testproj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testproj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8DB29482CFCC010006822FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8DB294A2CFCC010006822FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 			children = (
 				F8DB29662CFD1C54006822FD /* ImageStore.swift */,
 				F8DB29622CFCD2AE006822FD /* CharacterStore.swift */,
-				F8A78DBF2D2B2DD200861918 /* LocationStore.swift */,
+				F8A78DBF2D2B2DD200861918 /* URLClient.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -120,7 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				F8DB29602CFCD042006822FD /* CharactersMapper.swift */,
-				F8A78DC22D2B2F2700861918 /* CharacterMapper.swift */,
+				F8A78DCD2D30733C00861918 /* Mapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -301,10 +301,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8A78DC32D2B2F2700861918 /* CharacterMapper.swift in Sources */,
 				F8DB29612CFCD042006822FD /* CharactersMapper.swift in Sources */,
 				F8DB294D2CFCC010006822FD /* ListViewController.swift in Sources */,
 				F8DB29632CFCD2AE006822FD /* CharacterStore.swift in Sources */,
+				F8A78DCE2D30733C00861918 /* Mapper.swift in Sources */,
 				A98C0BD32D1C5ECF00480C72 /* DetailViewController.swift in Sources */,
 				F8DB29492CFCC010006822FD /* AppDelegate.swift in Sources */,
 				F8DB29652CFCD4F3006822FD /* LoadError.swift in Sources */,
@@ -313,7 +313,7 @@
 				F899E8C22D072419006627AA /* HTTPClient.swift in Sources */,
 				F8DB295F2CFCCF86006822FD /* Character.swift in Sources */,
 				F8A78DC82D2B30AC00861918 /* CharacterCell.swift in Sources */,
-				F8A78DC02D2B2DD200861918 /* LocationStore.swift in Sources */,
+				F8A78DC02D2B2DD200861918 /* URLClient.swift in Sources */,
 				F8A78DCC2D2F4DA800861918 /* LocationDetail.swift in Sources */,
 				F8DB29692CFD252A006822FD /* TestCell.swift in Sources */,
 				F8DB295D2CFCCC21006822FD /* ViewModel.swift in Sources */,

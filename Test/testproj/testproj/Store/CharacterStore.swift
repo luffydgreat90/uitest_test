@@ -50,17 +50,15 @@ final class CharacterStore {
             return nil
         }
 
-
         return getHandler(url) { result in
             complete(
                 Result {
                     switch result {
                     case .success((let data, let httpResponse)):
-                        try CharacterMapper.map(data: data, response: httpResponse)
+                        try Mapper.map(data: data, response: httpResponse)
                     case .failure(let failure):
                         throw failure
                     }
-
                 })
         }
     }

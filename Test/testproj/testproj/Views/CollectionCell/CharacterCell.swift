@@ -9,4 +9,7 @@ import UIKit.UICollectionViewCell
 
 final class CharacterCell: UICollectionViewCell {
 
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var lblCharacter: UILabel!
+    
 }
